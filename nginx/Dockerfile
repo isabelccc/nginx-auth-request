@@ -1,4 +1,4 @@
-FROM nginx:1.21-alpine
+FROM nginx:1.27-alpine
 
 # Copy the custom Nginx configuration
 COPY default.conf /etc/nginx/conf.d/default.conf

@@ -6,7 +6,6 @@ This project demonstrates how to use Nginx's `auth_request` module to authentica
 
 The setup consists of three services:
 
-1. **Client**: A Python script that sends HTTP requests with different auth headers.
 2. **Auth**: A Flask service that validates the `x-pretest` header.
 3. **Nginx**: Acts as a gateway, using `auth_request` to validate incoming requests.
 
@@ -24,32 +23,20 @@ A valid request must include the header: `x-pretest: valid-token`
 ## Running the Demo
 
 ```bash
-# Start all services
 docker-compose up --build
-
-# To run in background
-docker-compose up --build -d
-
-# To stop all services
-docker-compose down
 ```
 
 ## Testing
 
-The client service automatically sends three test requests:
-1. With a valid auth header
-2. Without an auth header
-3. With an invalid auth header
-
-You can also test manually:
+You can test manually:
 
 ```bash
 # Valid request
-curl -H "x-pretest: valid-token" http://localhost
+curl -H "x-pretest: valid-token" http://localhost:8080
 
 # Invalid request
-curl -H "x-pretest: wrong-token" http://localhost
+curl -H "x-pretest: wrong-token" http://localhost:8080
 
 # Missing header
-curl http://localhost
+curl http://localhost:8080
 ``` 

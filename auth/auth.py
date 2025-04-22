@@ -7,6 +7,7 @@ VALID_TOKEN = "valid-token"
 
 @app.route('/auth')
 def auth():
+    app.logger.info(f"Processing request to /auth")
     # Get the x-pretest header from the request
     auth_header = request.headers.get('x-pretest')
     
@@ -20,10 +21,12 @@ def auth():
         app.logger.warning(f"Auth failed with token: {auth_header}")
         return Response(status=401)
 
+
 @app.route('/health')
 def health_check():
     """Simple health check endpoint"""
-    return "Auth service is running", 200
+    return "Auth service is running\n", 200
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True) 
