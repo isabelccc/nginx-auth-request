@@ -1,0 +1,26 @@
+http:
+  routers:
+    auth-router:
+      rule: "PathPrefix(`/auth`)"
+      service: auth-service
+      entryPoints:
+        - web
+    health-router:
+      rule: "PathPrefix(`/health`)"
+      service: auth-service
+      entryPoints:
+        - web
+      middlewares:
+        - auth-middleware
+
+  middlewares:
+    auth-middleware:
+      forwardAuth:
+        address: "http://auth:5000/auth"
+        trustForwardHeader: true
+
+  services:
+    auth-service:
+      loadBalancer:
+        servers:
+          - url: "http://auth:5000"

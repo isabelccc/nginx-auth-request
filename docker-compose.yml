@@ -4,11 +4,6 @@ services:
       context: ./auth
     volumes:
       - ./auth/auth.py:/app/auth.py
-  web:
-    build:
-      context: ./web
-    volumes:
-      - ./web:/app
   traefik:
     image: traefik:v2.10
     command:
