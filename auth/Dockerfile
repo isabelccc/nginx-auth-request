@@ -5,6 +5,6 @@ WORKDIR /app
 COPY auth.py .
 RUN pip install flask
 
-EXPOSE 5000
+EXPOSE 8080
 
-CMD ["python", "auth.py"] 
+CMD ["python", "auth.py"]
