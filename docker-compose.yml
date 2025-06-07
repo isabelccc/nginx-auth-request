@@ -4,6 +4,8 @@ services:
       context: ./auth
     volumes:
       - ./auth/auth.py:/app/auth.py
+    expose:
+      - "8080" 
   traefik:
     image: traefik:v2.10
     command:

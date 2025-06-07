@@ -32,7 +32,8 @@ You can test manually:
 
 ```bash
 # Valid request
-curl -H "x-pretest: valid-token" http://localhost:8080
+curl -H "x-pretest: valid-token" http://localhost:8080/auth
+curl -H "x-pretest: valid-token" http://localhost:8080/health
 
 # Invalid request
 curl -i -H "x-pretest: wrong-token" http://localhost:8080/auth
